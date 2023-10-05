@@ -38,20 +38,14 @@ int EvenNumbers(int[] arr)
 
 
 
-void PrintArray(int[] arr)
-{
-
+ void PrintArray(int[] arr)
+ {
     for (int i = 0; i < arr.Length; i++)
     {
-        if (1000 < arr[i] && arr[i] < 99)
-        {
-            Console.WriteLine($"Ошибка. Введите положительное трехзначное число");
-        }
-        if (i < arr.Length - 1) Console.Write($"{arr[i]}, ");
+        if(i < arr.Length-1) Console.Write($"{arr[i]}, ");
         else Console.Write($"{arr[i]} ");
-
-
     }
+    
 }
 
 
