@@ -55,20 +55,18 @@ void PrintArray(int[] arr)
 }
 
 
-bool CheckCorrectArr(int[] arr)
-{
-    for (int i = 0; i < arr.Length; i++)
-        // if (99 < arr[i] && arr[i] < 1000)
-        if ((arr[i]/10>0) && (arr[i]/100 >0) && (arr[i]/1000 == 0))
-        {
-            return true;
-        }
-        else Console.WriteLine($"Ошибка. Введите положительное трехзначное число");
-    return false;
-}
+// bool CheckCorrectArr(int[] arr)
+// {
+//     for (int i = 0; i < arr.Length; i++)
+//         // if (99 < arr[i] && arr[i] < 1000)
+//         if ((arr[i] / 10 > 0) && (arr[i] / 100 > 0) && (arr[i] / 1000 == 0))
+//         {
+//             return true;
+//         }
+//         else Console.WriteLine($"Ошибка. Введите положительное трехзначное число");
+//     return false;
 
-
-
+// }
 
 int minnumber = Prompt("Введите миннимальное трехзначное положительное число = ");
 
@@ -77,14 +75,15 @@ int maxnumber = Prompt("Введите максимальное трехзнач
 
 int sizenumber = Prompt("Введите длину массива ");
 
-
+if (99 < minnumber && minnumber < 1000 && 99 < maxnumber && maxnumber < 1000)
+{
 
 int[] array = RandomNumbersArray(minnumber, maxnumber, sizenumber);
 
 
 
-if (CheckCorrectArr(array))
-{
+// if (CheckCorrectArr(array))
+// {
     int evenNumbers = EvenNumbers(array);
 
     Console.Write(" [");
@@ -92,5 +91,5 @@ if (CheckCorrectArr(array))
     Console.Write("] -> ");
     Console.WriteLine($"{evenNumbers}");
 }
-
+else Console.WriteLine($"Ошибка. Введите положительное трехзначное число");
 
