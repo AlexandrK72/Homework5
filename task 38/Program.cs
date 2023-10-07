@@ -1,15 +1,9 @@
 ﻿// Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
 // [3.22, 4.2, 1.15, 77.15, 65.2] => 77.15 - 1.15 = 76
 
-// double Prompt(string message)
-// {
-//     System.Console.Write(message);
-//     string value = Console.ReadLine();
-//     double result = Convert.ToInt32(value);
-//     return result;
-// }
 
-int PromptSize(string message)
+
+int Prompt(string message)
 {
     System.Console.Write(message);
     string value = Console.ReadLine();
@@ -33,38 +27,37 @@ double[] RandomNumbersArray(int min, int max, int size)
     return arr;
 }
 
-double DiffOfNubers(double[] arr)
+double MinNumber(double[] arr)
 {
 
-
-    double result = 0;
-    for (int i = 0; i < arr.Length; i++)
+    double minnum = arr[0];
+    for (int i = 1; i < arr.Length; i++)
     {
-        int minpos = i;
-        int maxpos = i;
 
-        for (int j = i + 1; j < arr.Length; j++)
+        if (minnum > arr[i])
         {
-            if (arr[j] < arr[minpos]) j = minpos;
-
-
-            for (int k = j+1; k < arr.Length; k++)
-            {
-                if (arr[k] < arr[maxpos]) k = maxpos;
-
-            }
+            minnum = arr[i];
 
         }
-
-
-        double max = arr[maxpos];
-        double min = arr[minpos];
-
-        result = max - min;
-        result = Math.Round(result, 2);
-
     }
-    return result;
+    return minnum;
+}
+
+
+double MaxNumber(double[] arr)
+{
+    double maxnum = arr[0];
+
+    for (int i = 1; i < arr.Length; i++)
+    {
+
+        if (maxnum < arr[i])
+        {
+            maxnum = arr[i];
+
+        }
+    }
+    return maxnum;
 }
 
 
@@ -79,19 +72,25 @@ void PrintArray(double[] arr)
 
 }
 
-int minnumber = PromptSize("Введите миннимальное трехзначное положительное число = ");
+int minnumber = Prompt("Введите минимальный элемент массива = ");
 
-int maxnumber = PromptSize("Введите максимальное трехзначное положительное число = ");
+int maxnumber = Prompt("Введите максимальный элемент массива = ");
+if(minnumber>maxnumber)
+{
+    Console.WriteLine("Некорректный ввод.");
+    return;
+}
 
 
-int sizenumber = PromptSize("Введите длину массива ");
+int sizenumber = Prompt("Введите длину массива ");
 
 double[] array = RandomNumbersArray(minnumber, maxnumber, sizenumber);
 
 
-double diffOfNubers = DiffOfNubers(array);
+double diffOfNubers = MaxNumber(array) - MinNumber(array);
+diffOfNubers = Math.Round(diffOfNubers, 2);
 
 Console.Write(" [");
 PrintArray(array);
 Console.Write("] -> ");
-Console.WriteLine($"{diffOfNubers}");
+Console.WriteLine($"{MaxNumber(array)} - {MinNumber(array)} = {diffOfNubers}");

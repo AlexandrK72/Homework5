@@ -52,9 +52,14 @@ int OddIndex(int[] arr)
     
 }
 
-int minnumber = Prompt("Введите миннимальное трехзначное положительное число = ");
+int minnumber = Prompt("Введите минимальный элемент массива = ");
 
-int maxnumber = Prompt("Введите максимальное трехзначное положительное число = ");
+int maxnumber = Prompt("Введите максимальный элемент массива = ");
+if(minnumber>maxnumber)
+{
+    Console.WriteLine("Некорректный ввод.");
+    return;
+}
 
 
 int sizenumber = Prompt("Введите длину массива ");
